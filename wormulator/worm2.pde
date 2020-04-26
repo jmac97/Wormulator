@@ -54,7 +54,7 @@ class worm2 {
         if (wLast.cycled != wCurrent.cycled) {
           wCurrent.extend();
         }
-        if (dir.mag() >= size.mag()*.75) {
+        if (dir.mag() >= size.mag()*.6) {
           dir.normalize();
           dir.mult(chaseSpeed);
           wCurrent.pos.add(dir);
