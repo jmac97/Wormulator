@@ -48,7 +48,9 @@ Getting the worm to contract to a slightly larger than "relaxed worm width" size
 <p align="center">
   <img width="375" height="160" src="https://github.com/jmac97/Wormulator/blob/master/media/text1.png">
 </p>
+
 ##
+
 <p align="center">
   <img width="375" height="263" src="https://github.com/jmac97/Wormulator/blob/master/media/text2.png">
 </p>
