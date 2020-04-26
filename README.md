@@ -19,9 +19,14 @@ We had planned to do some joke version of this in the spring, but with quarantin
   <img width="375" height="378.5" src="https://github.com/jmac97/Wormulator/blob/master/media/text3.png">
 </p>
 
-## Development
+## Research
 I researched earthworm locomotion (notes found in the "files" folder) and found that they move through waves of peristalis. They extend their body to reach forward, then contract it to anchor it. This motion follows in waves along the body. 
 
+<p align="center">
+  <img width="337" height="477" src="https://github.com/jmac97/Wormulator/blob/master/media/graph.png">
+</p>
+
+## Development and Code Breakdown
 I started with a line of ellipses that follow the mouse. 
 <p align="center">
   <img width="600" height="240" src="https://github.com/jmac97/Wormulator/blob/master/media/first.gif">
