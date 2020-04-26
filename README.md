@@ -39,7 +39,7 @@ Then I created a series of extensions and contractions that moved along the body
 
 Then I adjusted the shape and added irregular movements to the "head" to mimic wiggling/searching for the next anchor point. 
 <p align="center">
-  <img width="600" height="240" src="https://github.com/jmac97/Wormulator/blob/master/media/fourth.gif">
+  <img width="600" height="240" src="">
 </p>
 
 Getting the worm to contract to a slightly larger than "relaxed worm width" size was difficult and, although technically more correct, made the worm look less realistic. Adjusting things like this and other parameters to get better movement was surprisingly difficult. I am continuing to work on improving this model, but for now I need a break from worms. 
