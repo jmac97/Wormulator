@@ -1,68 +1,89 @@
-class worm3 {
-  ArrayList<segment3> worm;
+class Worm3 {
+  ArrayList<Segment3> worm;
   int l;
   float w;
-  float wMin;
+  int cycle;
 
-  worm3(int l_, int w_) {
+  Worm3(int l_, int w_, int c) {
     w = w_;
     l = l_;
-    
-    worm = new ArrayList<segment3>(l);
+    cycle = c; 
 
-    float inc = l/3; 
-    wMin = w/inc;
+    worm = new ArrayList<Segment3>(l);
 
     for (int i = 0; i < l; i++) {
-      if (i < inc) {
-        worm.add(new segment3(wMin, width/2, height/2));
-        wMin += w/inc;
-      } else if (i >= l-inc) {
-        worm.add(new segment3(wMin, width/2, height/2));
-        wMin -= w/inc;
-      } else {
-        worm.add(new segment3(w, width/2, height/2));
-      }
+      worm.add(new Segment3(w, width/2, height/2));
     }
   }
 
   void head() {
-    segment3 w = worm.get(0);
+    Segment3 w = worm.get(0);
     PVector dir = PVector.sub(mouse, w.pos);
-    if (dir.mag() >= 1) {
-      dir.normalize();
-      dir.mult(chaseSpeed);
-      w.pos.add(dir);
-      w.seg();
+    if (w.cycled == worm.get(cycle).cycled) {
+      w.extend();
+      if (dir.mag() >= 1) {
+        dir.normalize();
+        w.pos.add(dir);
+      }
     }
+    w.update();
   }
 
   void moveBody() {
     for (int i = 1; i < l; i++) {
-      segment3 wCurrent = worm.get(i);
-      segment3 wLast = worm.get(i-1);
+      Segment3 wCurrent = worm.get(i);
+      Segment3 wLast = worm.get(i-1);
       PVector dir = PVector.sub(wLast.pos, wCurrent.pos);
-      if (dir.mag() >= wCurrent.w/2) {
-        dir.normalize();
-        dir.mult(2);
-        wCurrent.pos.add(dir);
-      } else {
+      if (!wLast.extend || !wCurrent.extend) {
+        wCurrent.extend();
+        if (dir.mag() >= wCurrent.h/3) {
+          dir.normalize();
+          dir.mult(chaseSpeed);
+          wCurrent.pos.add(dir);
+        }
       }
-      wCurrent.seg();
+      wCurrent.update();
     }
   }
 }
 
-class segment3 {
-  float w;
-  PVector pos;
 
-  segment3(float w_, float x, float y) {
-    w = w_;
+class Segment3 {
+  PVector pos;
+  float h;
+  float hMax;
+  float hMin;
+  boolean extend;
+  int cycled;
+
+  Segment3(float h_, float x, float y) {
+    h = h_;
+    hMax = h_;
+    hMin = 5*h_/6;
+
     pos = new PVector(x, y);
+    extend = true;
+    cycled = 0;
   }
 
-  void seg() {
-    ellipse(pos.x, pos.y, w, w);
+  void extend() {
+    if (extend) {
+      if (h >= hMin) {
+        h--;
+      } else {
+        extend = false;
+      }
+    } else {
+      if (h <= hMax) {
+        h++;
+      } else {
+        extend = true;
+        cycled++;
+      }
+    }
+  }
+
+  void update() {
+    ellipse(pos.x, pos.y, h, h);
   }
 }

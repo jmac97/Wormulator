@@ -1,108 +1,68 @@
-class worm2 {
-  ArrayList<segment2> worm;
+class Worm2 {
+  ArrayList<Segment2> worm;
   int l;
-  int w;
+  float w;
   float wMin;
-  int cycle;
-  float inc;
 
-  worm2(int l_, int w_, int c) {
+  Worm2(int l_, int w_) {
     w = w_;
     l = l_;
-    cycle = c;
+    
+    worm = new ArrayList<Segment2>(l);
 
-    worm = new ArrayList<segment2>(l);
-
-
-    inc = l/3; 
+    float inc = l/3; 
     wMin = w/inc;
 
     for (int i = 0; i < l; i++) {
       if (i < inc) {
-        worm.add(new segment2(wMin, width/2+100, height/2));
+        worm.add(new Segment2(wMin, width/2, height/2));
         wMin += w/inc;
       } else if (i >= l-inc) {
-        worm.add(new segment2(wMin, width/2+100, height/2));
+        worm.add(new Segment2(wMin, width/2, height/2));
         wMin -= w/inc;
       } else {
-        worm.add(new segment2(w, width/2+100, height/2));
+        worm.add(new Segment2(w, width/2, height/2));
       }
     }
   }
 
+  void head() {
+    Segment2 w = worm.get(0);
+    PVector dir = PVector.sub(mouse, w.pos);
+    if (dir.mag() >= 1) {
+      dir.normalize();
+      dir.mult(chaseSpeed);
+      w.pos.add(dir);
+      w.seg();
+    }
+  }
 
   void moveBody() {
-    PVector dir;
-    for (int i = 0; i < worm.size(); i++) {
-      segment2 wCurrent = worm.get(i);
-
-      if (i == 0) {
-        dir = PVector.sub(wCurrent.pos, worm.get(cycle).pos);
-        if (worm.get(cycle).cycled == wCurrent.cycled) {
-          dir = PVector.sub(mouse, wCurrent.pos);
-          dir.normalize();
-          dir.mult(chaseSpeed);
-          wCurrent.pos.add(dir);
-          wCurrent.pos.x += random(-wiggle, wiggle);
-          wCurrent.pos.y += random(-wiggle, wiggle);
-          wCurrent.extend();
-        }
+    for (int i = 1; i < l; i++) {
+      Segment2 wCurrent = worm.get(i);
+      Segment2 wLast = worm.get(i-1);
+      PVector dir = PVector.sub(wLast.pos, wCurrent.pos);
+      if (dir.mag() >= wCurrent.w/2) {
+        dir.normalize();
+        dir.mult(2);
+        wCurrent.pos.add(dir);
       } else {
-        segment2 wLast = worm.get(i-1);
-        PVector size = new PVector(wLast.w/2, wCurrent.w/2);
-        dir = PVector.sub(wLast.pos, wCurrent.pos);
-        if (wLast.cycled != wCurrent.cycled) {
-          wCurrent.extend();
-        }
-        if (dir.mag() >= size.mag()*.6) {
-          dir.normalize();
-          dir.mult(chaseSpeed);
-          wCurrent.pos.add(dir);
-        }
       }
-
-      wCurrent.update();
+      wCurrent.seg();
     }
   }
 }
 
-class segment2 {
-  PVector pos;
+class Segment2 {
   float w;
-  boolean extend;
-  float wMax;
-  float wMin;
-  int cycled;
-  
-  segment2(float w_, float x, float y) {
+  PVector pos;
+
+  Segment2(float w_, float x, float y) {
     w = w_;
     pos = new PVector(x, y);
-
-    extend = true;
-    cycled = 0;
-
-    wMax = w_*1.5;
-    wMin = w_*.5;
   }
 
-  void extend() {
-    if (extend) {
-      if (w >= wMin) {
-        w--;
-      } else {
-        extend = false;
-      }
-    } else {
-      if (w <= wMax) {
-        w++;
-      } else {
-        extend = true;
-        cycled++;
-      }
-    }
-  }
-
-  void update() {
+  void seg() {
     ellipse(pos.x, pos.y, w, w);
   }
 }
