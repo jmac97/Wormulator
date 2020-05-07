@@ -47,7 +47,33 @@ Then I adjusted the shape and added irregular movements to the "head" to mimic w
   <img width="600" height="240" src="https://github.com/jmac97/Wormulator/blob/master/media/fourth.gif">
 </p>
 
-Getting the worm to contract to a slightly larger than "relaxed worm width" size was difficult and, although technically more correct, made the worm look less realistic. Adjusting things like this and other parameters to get better movement was surprisingly difficult. I am continuing to work on improving this model, but for now I need a break from worms. 
+Getting the worm to contract to a slightly larger than "relaxed worm width" size was difficult and, although technically more correct, made the worm look less realistic. Adjusting things like this and other parameters to get better movement was surprisingly difficult.
+
+Then I changed the worm to be broken into sections of five and changed the following function to be based on the chain example in Processing.
+<p align="center">
+  <img width="600" height="240" src="https://github.com/jmac97/Wormulator/blob/master/media/fifth.gif">
+</p>
+
+Then I added inching.
+<p align="center">
+  <img width="600" height="240" src="https://github.com/jmac97/Wormulator/blob/master/media/sixth.gif">
+</p>
+
+Then adjusted the distance of the inching cycle, the length of the worm, and the distance between the sections.
+<p align="center">
+  <img width="600" height="240" src="https://github.com/jmac97/Wormulator/blob/master/media/seventh.gif">
+</p>
+
+I dont't like the last worm that much. 
+
+Because the following and inching of each section is based on the radius of the previous, adjusting the shape of the worm so that it's sloping in the front and sloping in the back is difficult and hurt my head. But, since this is a focus on the movement of the worm, I think the lacking shape is ok.
+
+The program steps through all the worms in order. After the seventh worm, you can press a number 1-7 to see the respective worm again.
+<p align="center">
+  <img width="600" height="240" src="https://github.com/jmac97/Wormulator/blob/master/media/wormPlay.gif">
+</p>
+
+
 
 ## Extra: Some Recent Worm Moments
 <p align="center">
