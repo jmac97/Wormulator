@@ -72,12 +72,17 @@ Then adjusted the distance of the inching cycle, the length of the worm, and the
 
 I dont't like the last worm that much. 
 
+I readjusted the sixth worm to be more similar distance wise to the seventh worm.
+<p align="center">
+  <img width="600" height="240" src="https://github.com/jmac97/Wormulator/blob/master/media/eighth.gif">
+</p>
+
+I like this last worm very much.
+
 Because the following and inching of each section is based on the radius of the previous, adjusting the shape of the worm so that it's sloping in the front and sloping in the back is difficult and hurt my head. But, since this is a focus on the movement of the worm, I think the lacking shape is ok.
 
-The program steps through all the worms in order. After the seventh worm, you can press a number 1-7 to see the respective worm again.
-<p align="center">
-  <img width="600" height="240" src="https://github.com/jmac97/Wormulator/blob/master/media/wormPlay.gif">
-</p>
+The program steps through all the worms in order. After the seventh worm, you can press a number 1-8 to see the respective worm again.
+
 
 ## Instructions for non-Processing Download
 This sadly this only works for Windows computers.
