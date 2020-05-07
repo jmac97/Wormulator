@@ -8,6 +8,12 @@ A very basic earthworm movement simulation.
 ## Introduction
 This program steps through progression of the development of an earthworm simulator. It shows four different worms that follow the user's mouse. 
 
+1. Why Worms
+2. Research
+3. Development and Code Breakdown
+4. Instructions for non-Processing Download
+5. Extra: Some Recent Worm Moments
+
 ## Why Worms
 I've been thinking about worms a lot recently, mostly because one post-night-out, Uber ride home, me and my friend planned to have a Nightcrawler party where we give out goody bags of dirt. Each bag has a worm in it but one has a nightcrawler. Whoever had the nightcrawler bag was the winner of the night.
 
@@ -73,7 +79,14 @@ The program steps through all the worms in order. After the seventh worm, you ca
   <img width="600" height="240" src="https://github.com/jmac97/Wormulator/blob/master/media/wormPlay.gif">
 </p>
 
-
+## Instructions for non-Processing Download
+This sadly this only works for Windows computers.
+To download:
+1. Click the green "Clone or download" button on the right
+2. Clone the repo or click "Download ZIP" and unzip the folder
+3. Go into the "windowsDownload" folder and open the 32 or 64 bit folder, depending on your computer (most likely 64)
+4. Click "wormulator.exe"
+5. If you're just going to use this application, you only need the stuff in the 32 or 64 bit folder you went into. You can move this folder somewhere else and delete the rest if you wish
 
 ## Extra: Some Recent Worm Moments
 <p align="center">
