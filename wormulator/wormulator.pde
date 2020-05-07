@@ -6,6 +6,7 @@ Worm4 worm4;
 ArrayList<Section5> worm5;
 ArrayList<Section6> worm6;
 ArrayList<Section7> worm7;
+ArrayList<Section8> worm8;
 
 int wormLength = 50;
 int wormWidth = 10;
@@ -43,13 +44,18 @@ void setup() {
   }
 
   worm6 = new ArrayList<Section6>();
-  for (int i = 0; i < 10; i++) {
+  for (int i = 0; i < l; i++) {
     worm6.add(new Section6());
   }
 
   worm7 = new ArrayList<Section7>();
-  for (int i = 0; i < 20; i++) {
+  for (int i = 0; i < l*2; i++) {
     worm7.add(new Section7());
+  }
+
+  worm8 = new ArrayList<Section8>();
+  for (int i = 0; i < l; i++) {
+    worm8.add(new Section8());
   }
 
   mouse = new PVector(0, height/2);
@@ -303,28 +309,92 @@ void draw() {
     }
 
     fill(0);
-    text("inching in sections", width/2, y);
+    text("closer sections", width/2, y);
     opacity = 255;
   }
 
-  // Instructions sequence
-  else if (frameCount > 60*110 && frameCount <= 60*113) {
-    fill(0);
-    if (y > height/2) {
-      y--;
+  // Eigth worm - title
+  else if (frameCount > 60*110 && frameCount <= 60*115) {
+    fill(175, 112, 98, opacity);
+    if (worm7.get(9).stuff.get(4).radius == worm7.get(9).stuff.get(4).rMax) {
+      worm7.get(0).move(mouse);
     }
-    text("wormulator", width/2, y);
-  } else if (frameCount > 60*108 && frameCount <= 60*118) {
-    fill(0, opacity);
-    text("wormulator", width/2, y);
-    opacity--;
-  } else if (frameCount > 60*118 && frameCount <= 60*122) {
+
+    for (int i = 1; i < 20; i++) {
+      last.x = worm7.get(i-1).stuff.get(4).x;
+      last.y = worm7.get(i-1).stuff.get(4).y;
+      worm7.get(i).move(last);
+      worm7.get(i).show();
+    }
+
+    fill(175, 112, 98);
+    if (worm8.get(9).stuff.get(4).radius == worm8.get(9).stuff.get(4).rMax) {
+      worm8.get(0).move(mouse);
+    }
+
+    for (int i = 1; i < 10; i++) {
+      last.x = worm8.get(i-1).stuff.get(4).x;
+      last.y = worm8.get(i-1).stuff.get(4).y;
+      worm8.get(i).move(last);
+      worm8.get(i).show();
+    }
+
     fill(0);
-    text("press a number 1-7 to see a worm", width/2, y);
+    text("worm the eigth", width/2, y);
+    opacity -= 5;
+  }
+
+  // Eigth worm - sub title
+  else if (frameCount > 60*115 && frameCount <= 60*120) {
+    fill(175, 112, 98);
+    if (worm8.get(9).stuff.get(4).radius == worm8.get(9).stuff.get(4).rMax) {
+      worm8.get(0).move(mouse);
+    }
+
+    for (int i = 1; i < 10; i++) {
+      last.x = worm8.get(i-1).stuff.get(4).x;
+      last.y = worm8.get(i-1).stuff.get(4).y;
+      worm8.get(i).move(last);
+      worm8.get(i).show();
+    }
+
+    fill(0);
+    text("refined inching in sections", width/2, y);
+    opacity = 255;
+  }
+  
+  // Goodbye worms
+  // Eigth worm - sub title
+  else if (frameCount > 60*120 && frameCount <= 60*123) {
+    fill(175, 112, 98, opacity);
+    if (worm8.get(9).stuff.get(4).radius == worm8.get(9).stuff.get(4).rMax) {
+      worm8.get(0).move(mouse);
+    }
+
+    for (int i = 1; i < 10; i++) {
+      last.x = worm8.get(i-1).stuff.get(4).x;
+      last.y = worm8.get(i-1).stuff.get(4).y;
+      worm8.get(i).move(last);
+      worm8.get(i).show();
+    }
+
+    fill(0, opacity);
+    text("refined inching in sections", width/2, y);
+    opacity -= 5;
+  }
+
+  // Instructions sequence
+  else if (frameCount > 60*123 && frameCount <= 60*128) {
+    fill(0, opacity);
+    text("wormulator", width/2, height/2);
+    opacity += 5;
+  } else if (frameCount > 60*128 && frameCount <= 60*132) {
+    fill(0);
+    text("press a number 1-8 to see a worm", width/2, y);
   }
 
   // Choose your worm
-  else if (frameCount > 60*118) {
+  else if (frameCount > 60*128) {
     if (keyPressed) {
 
       // Worm the first selection
@@ -360,6 +430,11 @@ void draw() {
       // Worm the seventh
       if (key == '7') {
         wormNum = 7;
+      }
+
+      // Worm the eigth
+      if (key == '8') {
+        wormNum = 8;
       }
     }
 
@@ -450,6 +525,24 @@ void draw() {
 
       fill(0);
       text("worm the seventh", width/2, height-50);
+    }
+
+    // Worm the eigth
+    if (wormNum == 8) {
+      fill(175, 112, 98);
+      if (worm8.get(9).stuff.get(4).radius == worm8.get(9).stuff.get(4).rMax) {
+        worm8.get(0).move(mouse);
+      }
+
+      for (int i = 1; i < 10; i++) {
+        last.x = worm8.get(i-1).stuff.get(4).x;
+        last.y = worm8.get(i-1).stuff.get(4).y;
+        worm8.get(i).move(last);
+        worm8.get(i).show();
+      }
+      
+      fill(0);
+      text("worm the eigth", width/2, height-50);
     }
   }
 }
