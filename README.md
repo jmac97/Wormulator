@@ -73,9 +73,7 @@ Then adjusted the distance of the inching cycle, the length of the worm, and the
 I dont't like the last worm that much. 
 
 I readjusted the sixth worm to be more similar distance wise to the seventh worm.
-<p align="center">
-  <img width="600" height="240" src="https://github.com/jmac97/Wormulator/blob/master/media/eighth.gif">
-</p>
+
 
 I like this last worm very much.
 
