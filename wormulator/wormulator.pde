@@ -313,7 +313,7 @@ void draw() {
     opacity = 255;
   }
 
-  // Eigth worm - title
+  // Eighth worm - title
   else if (frameCount > 60*110 && frameCount <= 60*115) {
     fill(175, 112, 98, opacity);
     if (worm7.get(9).stuff.get(4).radius == worm7.get(9).stuff.get(4).rMax) {
@@ -340,11 +340,11 @@ void draw() {
     }
 
     fill(0);
-    text("worm the eigth", width/2, y);
+    text("worm the eighth", width/2, y);
     opacity -= 5;
   }
 
-  // Eigth worm - sub title
+  // Eighth worm - sub title
   else if (frameCount > 60*115 && frameCount <= 60*120) {
     fill(175, 112, 98);
     if (worm8.get(9).stuff.get(4).radius == worm8.get(9).stuff.get(4).rMax) {
@@ -364,7 +364,7 @@ void draw() {
   }
   
   // Goodbye worms
-  // Eigth worm - sub title
+  // Eighth worm - sub title
   else if (frameCount > 60*120 && frameCount <= 60*123) {
     fill(175, 112, 98, opacity);
     if (worm8.get(9).stuff.get(4).radius == worm8.get(9).stuff.get(4).rMax) {
@@ -432,7 +432,7 @@ void draw() {
         wormNum = 7;
       }
 
-      // Worm the eigth
+      // Worm the eighth
       if (key == '8') {
         wormNum = 8;
       }
@@ -527,7 +527,7 @@ void draw() {
       text("worm the seventh", width/2, height-50);
     }
 
-    // Worm the eigth
+    // Worm the eighth
     if (wormNum == 8) {
       fill(175, 112, 98);
       if (worm8.get(9).stuff.get(4).radius == worm8.get(9).stuff.get(4).rMax) {
@@ -542,7 +542,7 @@ void draw() {
       }
       
       fill(0);
-      text("worm the eigth", width/2, height-50);
+      text("worm the eighth", width/2, height-50);
     }
   }
 }
