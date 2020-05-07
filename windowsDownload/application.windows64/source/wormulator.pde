@@ -23,7 +23,7 @@ int l = 10;
 
 PFont text;
 
-boolean wormPlay = false;
+int wormNum = 0;
 
 void setup() {
   size(1000, 400);
@@ -306,9 +306,9 @@ void draw() {
     text("inching in sections", width/2, y);
     opacity = 255;
   }
-  
+
   // Instructions sequence
-  else if(frameCount > 60*110 && frameCount <= 60*113) {
+  else if (frameCount > 60*110 && frameCount <= 60*113) {
     fill(0);
     if (y > height/2) {
       y--;
@@ -318,104 +318,138 @@ void draw() {
     fill(0, opacity);
     text("wormulator", width/2, y);
     opacity--;
-  } else if (frameCount > 60*118 && frameCount <= 60*126) {
-    fill(0, opacity);
+  } else if (frameCount > 60*118 && frameCount <= 60*122) {
+    fill(0);
     text("press a number 1-7 to see a worm", width/2, y);
-    opacity++;
   }
 
   // Choose your worm
   else if (frameCount > 60*118) {
     if (keyPressed) {
 
-      // Worm the first
+      // Worm the first selection
       if (key == '1') {
-        fill(175, 112, 98);
-        worm1.dir();
-        worm1.show();
-
-        fill(0);
-        text("worm the first", width/2, height-50);
+        wormNum = 1;
       }
 
       // Worm the second
       if (key == '2') {
-        fill(175, 112, 98);
-        worm2.head();
-        worm2.moveBody();
-
-        fill(0);
-        text("worm the second", width/2, height-50);
+        wormNum = 2;
       }
 
       // Worm the third
       if (key == '3') {
-        fill(175, 112, 98);
-        worm3.head();
-        worm3.moveBody();
-
-        fill(0);
-        text("worm the third", width/2, height-50);
+        wormNum = 3;
       }
 
       // Worm the fourth
       if (key == '4') {
-        fill(175, 112, 98);
-        worm4.moveBody();
-
-        fill(0);
-        text("worm the fourth", width/2, height-50);
+        wormNum = 4;
       }
 
       // Worm the fifth
       if (key == '5') {
-        fill(175, 112, 98);
-        worm5.get(0).move(mouse);
-        for (int i = 1; i < l; i++) {
-          last.x = worm5.get(i-1).part.get(4).x;
-          last.y = worm5.get(i-1).part.get(4).y;
-          worm5.get(i).move(last);
-        }
-
-        fill(0);
-        text("worm the fifth", width/2, height-50);
+        wormNum = 5;
       }
 
       // Worm the sixth
       if (key == '6') {
-        fill(175, 112, 98);
-        if (worm6.get(4).stuff.get(4).radius == worm6.get(4).stuff.get(4).rMax) {
-          worm6.get(0).move(mouse);
-        }
-
-        for (int i = 1; i < 5; i++) {
-          last.x = worm6.get(i-1).stuff.get(4).x;
-          last.y = worm6.get(i-1).stuff.get(4).y;
-          worm6.get(i).move(last);
-          worm6.get(i).show();
-        }
-
-        fill(0);
-        text("worm the sixth", width/2, height-50);
+        wormNum = 6;
       }
 
       // Worm the seventh
       if (key == '7') {
-        fill(175, 112, 98);
-        if (worm7.get(9).stuff.get(4).radius == worm7.get(9).stuff.get(4).rMax) {
-          worm7.get(0).move(mouse);
-        }
-
-        for (int i = 1; i < 20; i++) {
-          last.x = worm7.get(i-1).stuff.get(4).x;
-          last.y = worm7.get(i-1).stuff.get(4).y;
-          worm7.get(i).move(last);
-          worm7.get(i).show();
-        }
-
-        fill(0);
-        text("worm the seventh", width/2, height-50);
+        wormNum = 7;
       }
+    }
+
+    // Worm the first
+    if (wormNum == 1) {
+      fill(175, 112, 98);
+      worm1.dir();
+      worm1.show();
+
+      fill(0);
+      text("worm the first", width/2, height-50);
+    }
+
+    // Worm the second
+    if (wormNum == 2) {
+      fill(175, 112, 98);
+      worm2.head();
+      worm2.moveBody();
+
+      fill(0);
+      text("worm the second", width/2, height-50);
+    }
+
+    // Worm the third
+    if (wormNum == 3) {
+      fill(175, 112, 98);
+      worm3.head();
+      worm3.moveBody();
+
+      fill(0);
+      text("worm the third", width/2, height-50);
+    }
+
+    // Worm the fourth
+    if (wormNum == 4) {
+      fill(175, 112, 98);
+      worm4.moveBody();
+
+      fill(0);
+      text("worm the fourth", width/2, height-50);
+    }
+
+    // Worm the fifth
+    if (wormNum == 5) {
+      fill(175, 112, 98);
+      worm5.get(0).move(mouse);
+      for (int i = 1; i < l; i++) {
+        last.x = worm5.get(i-1).part.get(4).x;
+        last.y = worm5.get(i-1).part.get(4).y;
+        worm5.get(i).move(last);
+      }
+
+      fill(0);
+      text("worm the fifth", width/2, height-50);
+    }
+
+    // Worm the sixth
+    if (wormNum == 6) {
+      fill(175, 112, 98);
+      if (worm6.get(4).stuff.get(4).radius == worm6.get(4).stuff.get(4).rMax) {
+        worm6.get(0).move(mouse);
+      }
+
+      for (int i = 1; i < 5; i++) {
+        last.x = worm6.get(i-1).stuff.get(4).x;
+        last.y = worm6.get(i-1).stuff.get(4).y;
+        worm6.get(i).move(last);
+        worm6.get(i).show();
+      }
+
+      fill(0);
+      text("worm the sixth", width/2, height-50);
+    }
+
+    // Worm the seventh
+    if (wormNum == 7) {
+      fill(175, 112, 98);
+      if (worm7.get(9).stuff.get(4).radius == worm7.get(9).stuff.get(4).rMax) {
+        worm7.get(0).move(mouse);
+      }
+
+      for (int i = 1; i < 20; i++) {
+        last.x = worm7.get(i-1).stuff.get(4).x;
+        last.y = worm7.get(i-1).stuff.get(4).y;
+        worm7.get(i).move(last);
+        worm7.get(i).show();
+      }
+
+      fill(0);
+      text("worm the seventh", width/2, height-50);
     }
   }
 }
